@@ -13,11 +13,14 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_LOGIN = 21;
     boolean logon = false;
     private PokerCard card;
+    String[] func = {"餘額查詢","交易明細","最新消息","投資理財","離開"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        ListView list = (ListView) findViewById(R.id.list);
+//        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,func);
+//        list.setAdapter(adapter);
         card = findViewById(R.id.card);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

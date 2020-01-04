@@ -3,6 +3,7 @@ package com.wen.atm;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        edUsername = findViewById(R.id.username);
+        SharedPreferences setting = getSharedPreferences("atm",MODE_PRIVATE);
+        edUsername.setText(setting.getString("PREF_USERID", ""));
     }
 
     public void login(View view) {
@@ -26,6 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         username = edUsername.getText().toString();
         password = edPassword.getText().toString();
         if ("wendy".equals(username) && "0000".equals(password)) {
+            SharedPreferences setting = getSharedPreferences("atm", MODE_PRIVATE);
+            setting.edit()
+                    .putString("PREF_USERID", username)
+                    .apply();
             setResult(RESULT_OK);
             finish();
         } else {

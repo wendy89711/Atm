@@ -1,6 +1,7 @@
 package com.wen.atm;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,6 +29,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        String user = "wendy";
+//        SharedPreferences pref = getSharedPreferences("test",MODE_PRIVATE);
+//        pref.edit()
+//                .putString("USER", user)//資料標籤叫"USER"
+//                .putInt("STAGE", 3)
+//                .putFloat("HP", 98.3f)
+//                .commit();
+//        String userid = getSharedPreferences("test",MODE_PRIVATE)
+//                .getString("USER","");
+
 //        ListView list = (ListView) findViewById(R.id.list);
 //        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,func);
 //        list.setAdapter(adapter);
@@ -36,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                card.setValue(32);
+                card.setValue(24);
             }
         });
         if (!logon) {
@@ -45,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(login,REQUEST_CODE_LOGIN);
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
